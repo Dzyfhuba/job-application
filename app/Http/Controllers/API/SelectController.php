@@ -7,8 +7,35 @@ use App\Models\Job;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 
+/**
+ *
+ *         @OA\Schema(
+ *             schema="Resource",
+ *             type="object",
+ *             properties={
+ *                 @OA\Property(property="id", type="integer"),
+ *                 @OA\Property(property="text", type="string"),
+ *             }
+ *         )
+ */
 class SelectController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/select/jobs",
+     *     tags={"select"},
+     *     summary="Get select options",
+     *     description="Retrieve a list of jobs as option",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/Resource")
+     *         )
+     *     ),
+     * )
+     */
     public function jobs(Request $request)
     {
         try {
@@ -29,6 +56,23 @@ class SelectController extends Controller
             ], 500);
         }
     }
+
+    /**
+     * @OA\Get(
+     *     path="/select/skills",
+     *     tags={"select"},
+     *     summary="Get select options",
+     *     description="Retrieve a list of skills as option",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/Resource")
+     *         )
+     *     ),
+     * )
+     */
     public function skills(Request $request)
     {
         try {

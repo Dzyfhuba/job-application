@@ -1,0 +1,165 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Job Application API Documentation",
+        "version": "0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api",
+            "description": "In Docker Container"
+        },
+        {
+            "url": "http://localhost:8000/api",
+            "description": "In Artisan Serve"
+        }
+    ],
+    "paths": {
+        "/application": {
+            "post": {
+                "tags": [
+                    "application"
+                ],
+                "summary": "Store application",
+                "description": "Store application",
+                "operationId": "applicationPost",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "job_id": {
+                                        "type": "integer"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "year": {
+                                        "type": "integer"
+                                    },
+                                    "skill_sets_id": {
+                                        "description": "An array of skill set IDs",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "pesan berhasil"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed response - Pesan Kesalahan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Pesan Kesalahan"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Exception occurred"
+                    }
+                }
+            }
+        },
+        "/select/jobs": {
+            "get": {
+                "tags": [
+                    "select"
+                ],
+                "summary": "Get select options",
+                "description": "Retrieve a list of jobs as option",
+                "operationId": "b3ae281689c03fcf3b691332b2876942",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Resource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/select/skills": {
+            "get": {
+                "tags": [
+                    "select"
+                ],
+                "summary": "Get select options",
+                "description": "Retrieve a list of skills as option",
+                "operationId": "a4ef1e777dcd28ec8839f7ba10f8aa6e",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Resource"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Resource": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "text": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

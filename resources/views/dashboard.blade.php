@@ -95,12 +95,9 @@
 
                 const TOKEN = document.querySelector('[name="csrf-token"]').getAttribute('content')
 
-                axios.post('/application', data, {
-                        headers: {
-                            'X-CSRF-TOKEN': TOKEN
-                        }
-                    })
+                axios.post('/api/application', data)
                     .then(res => {
+                        console.log(res.data)
                         Swal.fire({
                                 title: 'Berhasil',
                                 text: 'Lamaran berhasil dikirim.',

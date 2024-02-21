@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.1",
         "almasaeed2010/adminlte": "~3.2",
+        "darkaonline/l5-swagger": "^8.5",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.6.8",
         "laravel/framework": "^10.10",

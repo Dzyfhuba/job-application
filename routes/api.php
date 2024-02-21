@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\ApplicationController;
 use App\Http\Controllers\API\SelectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/select/jobs', [SelectController::class, 'jobs']);
 Route::get('/select/skills', [SelectController::class, 'skills']);
+
+Route::post('/application', [ApplicationController::class, 'store']);
