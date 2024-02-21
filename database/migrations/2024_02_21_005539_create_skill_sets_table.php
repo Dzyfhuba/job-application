@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Cadidate;
+use App\Models\Candidate;
 use App\Models\Skill;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('skill_sets', function (Blueprint $table) {
-            $table->foreignIdFor(Cadidate::class);
+            $table->foreignIdFor(Candidate::class);
             $table->foreignIdFor(Skill::class);
         });
     }
